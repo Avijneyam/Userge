@@ -31,7 +31,7 @@ async def gsearch(message: Message):
         return
     try:
         g_search = BingSearch()
-        gresults = await g_search.search(query, page)
+        gresults = g_search.search(query, page)
     except Exception as e:
         await message.err(text=e)
         return
