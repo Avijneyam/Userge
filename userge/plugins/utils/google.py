@@ -31,20 +31,19 @@ async def gsearch(message: Message):
         return
     try:
         g_search = BingSearch()
-        gresults = g_search.search(query, page)
+        gresults = await gsearch.async_search(query, page)
     except Exception as e:
         await message.err(text=e)
         return
-    output = ""
     for i in range(limit):
         try:
             title = gresults["titles"][i]
             link = gresults["links"][i]
             desc = gresults["descriptions"][i]
-            output += f"[{title}]({link})\n"
+            output = f"[{title}]({link})\n"
             output += f"`{desc}`\n\n"
         except (IndexError, KeyError):
             break
-    output = f"**Google Search:**\n`{query}`\n\n**Results:**\n{output}"
-    await message.edit_or_send_as_file(text=output, caption=query,
+    final = f"**Google Search:**\n`{query}`\n\n**Results:**\n{output}"
+    await message.edit_or_send_as_file(text=final, caption=query,
                                        disable_web_page_preview=True)
