@@ -20,8 +20,8 @@ Pillow==7.1.0
 psutil
 pybase64
 pyrogram==1.2.6
-pytgcalls=0.0.16
-ffmpeg-python
+pytgcalls==0.0.16
+#ffmpeg-python
 pySmartDL
 python-dotenv
 pytz
